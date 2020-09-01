@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    
+}
+
+html, body {
+    min-height: 100vh;
+}
+
+body {
+    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+}
+
+
+
+#workroom {
+    min-height: 70vh;
+    max-width: 60%;
+    margin: auto;
+}
+
+
+footer {
+    min-width: 40%;
+    max-width: 70%;
+    min-height: 20vh;
+    margin: auto;
+}
