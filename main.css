@@ -23,8 +23,7 @@ body {
 
 
 footer {
-    min-width: 40%;
     max-width: 70%;
-    min-height: 20vh;
+    min-height: 10vh;
     margin: auto;
 }
