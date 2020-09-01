@@ -20,15 +20,14 @@ $(document).ready(function() {
     });
 
     $("input[type=checkbox]").on("click", () => {
-        console.log(event.target.name);
-        console.log(tadoies.indexOf(event.target.name));
-
+        
         var index = tadoies.indexOf(event.target.name);
         if ( index > -1) {
             tadoies.splice(index, 1);
-            showList(tadoies);
+            
         } else {
             alert("item not found")
         }
+        showList(tadoies);
     })
 });
