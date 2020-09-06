@@ -21,6 +21,9 @@ body {
     margin: auto;
 }
 
+.list-group-item {
+    margin: 0.5em 0;
+}
 
 footer {
     max-width: 70%;

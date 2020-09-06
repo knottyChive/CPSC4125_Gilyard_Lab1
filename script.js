@@ -1,33 +1,52 @@
-$(document).ready(function() {
-    // Prepopulated List
-    var tadoies = ["Black Lives Matter", "see new Dimension", "Groceries on Pluto", "go vote Tuesday, November 3, 2020"];
-    
-    // map the todos into a group on the page 
-    function showList(arr) {
-        $('.list-group').html(" ");
-        arr.forEach(element => {
-            $(".list-group").append(`<li class="list-group-item"><input type="checkbox" name="${element}" id="entryDisplay"> <span id="tadoieName">${element}</span></li>`);
-        })
+// list references
+const todoList = document.getElementById('todoList');
+
+// entry references
+const newTodo = document.getElementById('newTodo');
+const addTodoBtn = document.getElementById('addTodoBtn');
+
+
+class Item {
+    constructor(itemName) {
+        this.createTodo(itemName);
     }
-    showList(tadoies);
 
-    // to add to the todo list onclick() 
-    $("#addTodoBtn").click(function() {
-        event.preventDefault();
-        var tadoie = $("#userField").val();
-        tadoies.push(tadoie);
-        showList(tadoies);
-    });
-
-    $("input[type=checkbox]").on("click", () => {
+    createTodo(itemName) {
+        // list item 
+        let todoItem = document.createElement('li');
+        todoItem.disabled = true;
+        todoItem.classList.add('list-group-item')
+        todoItem.classList.add('list-group-item-primary');
         
-        var index = tadoies.indexOf(event.target.name);
-        if ( index > -1) {
-            tadoies.splice(index, 1);
-            
-        } else {
-            alert("item not found")
-        }
-        showList(tadoies);
-    })
-});
+        let todoText = document.createElement('span');
+        todoText.innerText = itemName;
+
+        let removeBtn = document.createElement('button');
+        removeBtn.type = 'button';
+        removeBtn.classList.add('close');
+
+        let closeX = document.createElement('span');
+        closeX.innerText = 'x';
+
+        todoList.appendChild(todoItem);
+        todoItem.appendChild(todoText);
+        todoItem.appendChild(removeBtn);
+        removeBtn.appendChild(closeX);
+
+        removeBtn.addEventListener('click', () => this.removeButton(todoItem))
+    }
+
+    removeButton(item) {
+        todoList.removeChild(item);
+    }
+}
+
+function checkInput() {
+    if (newTodo.value != "") { 
+        new Item(newTodo.value); 
+        newTodo.value = "";
+    }
+}
+
+addTodoBtn.addEventListener('click', checkInput);
+
